@@ -34,7 +34,7 @@ public class MainConfiguration {
             main.getDataFolder().mkdirs();
         File config = new File(main.getDataFolder(), "config.yml");
         if(!config.exists()) {
-            main.getConfig().addDefault("radius", radius = 5.0d);
+            main.getConfig().addDefault("radius", radius = 2.0d);
             main.getConfig().options().copyDefaults(true);
             try {
                 main.getConfig().save(config);
@@ -43,7 +43,7 @@ public class MainConfiguration {
             }
         } else {
             main.reloadConfig();
-            radius = main.getConfig().getDouble("radius", 5.0d);
+            radius = main.getConfig().getDouble("radius", 2.0d);
         }
     }
 
