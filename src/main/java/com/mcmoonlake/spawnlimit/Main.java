@@ -57,6 +57,10 @@ public class Main extends JavaPlugin {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if(!sender.hasPermission("moonlake.bw-sl.use")) {
+            sender.sendMessage(ChatColor.RED + "You do not have permission to use this command.");
+            return true;
+        }
         if(args.length == 0 || args[0].equalsIgnoreCase("help")) {
             printlnHelp(sender);
         } else if(args[0].equalsIgnoreCase("reload")) {
@@ -84,8 +88,8 @@ public class Main extends JavaPlugin {
     private void printlnHelp(CommandSender sender) {
         sender.sendMessage(new String[] {
                 ChatColor.AQUA.toString() + ChatColor.STRIKETHROUGH + "     " +
-                        ChatColor.GOLD + "BedwarsRel-SpawnLimit by lgou2w v" + getDescription().getVersion() +
-                        ChatColor.AQUA.toString() + ChatColor.STRIKETHROUGH + "     ",
+                ChatColor.GOLD + "BedwarsRel-SpawnLimit by lgou2w v" + getDescription().getVersion() +
+                ChatColor.AQUA.toString() + ChatColor.STRIKETHROUGH + "     ",
                 "/bw-sl help - View plugin command help.",
                 "/bw-sl reload - Overloaded plugin configuration file.",
                 "/bw-sl radius <value> - Set the configuration item radius value."
