@@ -45,7 +45,6 @@ public class MainConfiguration {
             main.reloadConfig();
             radius = main.getConfig().getDouble("radius", 5.0d);
         }
-        System.out.println(radius);
     }
 
     public boolean setRadius(double radius) {
