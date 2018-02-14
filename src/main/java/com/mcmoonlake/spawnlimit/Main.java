@@ -29,6 +29,7 @@ import java.util.logging.Level;
 public class Main extends JavaPlugin {
 
     private MainConfiguration configuration;
+    private MainManager manager;
 
     public Main() {
     }
@@ -46,12 +47,15 @@ public class Main extends JavaPlugin {
         }
         this.configuration = new MainConfiguration(this);
         this.configuration.reload();
+        this.manager = new MainManager(this);
         this.getServer().getPluginManager().registerEvents(new MainListener(this), this);
         this.getLogger().info("起床战争出生点限制扩展 BedwarsRel-SpawnLimit 插件 v" + getDescription().getVersion() + " 成功加载.");
     }
 
     @Override
     public void onDisable() {
+        this.manager.close();
+        this.manager = null;
         this.configuration = null;
     }
 
@@ -98,6 +102,10 @@ public class Main extends JavaPlugin {
 
     public MainConfiguration getConfiguration() {
         return configuration;
+    }
+
+    public MainManager getManager() {
+        return manager;
     }
 
     private boolean setupBedwarsRel() {

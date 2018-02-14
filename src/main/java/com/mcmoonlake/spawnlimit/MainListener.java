@@ -17,13 +17,6 @@
 
 package com.mcmoonlake.spawnlimit;
 
-import io.github.bedwarsrel.BedwarsRel;
-import io.github.bedwarsrel.game.Game;
-import io.github.bedwarsrel.game.Team;
-import org.bukkit.Bukkit;
-import org.bukkit.GameMode;
-import org.bukkit.Location;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -40,42 +33,13 @@ public class MainListener implements Listener {
 
     @EventHandler(priority = EventPriority.MONITOR)
     public void onBreak(BlockBreakEvent event) {
-        if(limitCancelled(event.getPlayer(), event.getBlock().getLocation()))
+        if(main.getManager().limitCancelled(event.getPlayer(), event.getBlock().getLocation()))
             event.setCancelled(true);
     }
 
     @EventHandler(priority = EventPriority.MONITOR)
     public void onPlace(BlockPlaceEvent event) {
-        if(limitCancelled(event.getPlayer(), event.getBlock().getLocation()))
+        if(main.getManager().limitCancelled(event.getPlayer(), event.getBlock().getLocation()))
             event.setCancelled(true);
-    }
-
-    private BedwarsRel bedwarsRel;
-
-    // nullable
-    private Game getGameByLocation(Location location) {
-        if(bedwarsRel == null)
-            bedwarsRel = (BedwarsRel) Bukkit.getServer().getPluginManager().getPlugin("BedwarsRel");
-        return bedwarsRel.getGameManager().getGameByLocation(location);
-    }
-
-    private boolean limitCancelled(Player player, Location location) {
-        if(player.getGameMode() == GameMode.CREATIVE && player.isOp())
-            return false;
-        Game game = getGameByLocation(location);
-        if(game == null)
-            return false;
-        Team team = game.getPlayerTeam(player);
-        if(team == null)
-            return false;
-        double radius = main.getConfiguration().getRadius();
-        double x = location.getX();
-        double y = location.getY();
-        double z = location.getZ();
-        Location min = team.getSpawnLocation().clone().subtract(radius, radius, radius);
-        Location max = team.getSpawnLocation().clone().add(radius, radius, radius);
-        return x >= min.getX() && x <= max.getX() &&
-                y >= min.getY() && y <= max.getY() &&
-                z >= min.getZ() && z <= max.getZ();
     }
 }
