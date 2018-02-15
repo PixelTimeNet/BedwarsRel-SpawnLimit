@@ -26,12 +26,12 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.logging.Level;
 
-public class Main extends JavaPlugin {
+public class Spawnlimit extends JavaPlugin {
 
     private MainConfiguration configuration;
     private MainManager manager;
 
-    public Main() {
+    public Spawnlimit() {
     }
 
     @Override

@@ -25,9 +25,9 @@ import org.bukkit.event.block.BlockPlaceEvent;
 
 public class MainListener implements Listener {
 
-    private final Main main;
+    private final Spawnlimit main;
 
-    public MainListener(Main main) {
+    public MainListener(Spawnlimit main) {
         this.main = main;
     }
 

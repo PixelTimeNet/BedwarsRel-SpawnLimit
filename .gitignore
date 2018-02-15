@@ -28,3 +28,6 @@ hs_err_pid*
 /doc/
 /META-INF/
 *.iml
+*.classpath
+*.prefs
+*.project

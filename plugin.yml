@@ -16,11 +16,11 @@
 #
 
 name: BedwarsRel-SpawnLimit
-main: com.mcmoonlake.spawnlimit.Main
-version: ${project.version}
+main: com.mcmoonlake.spawnlimit.Spawnlimit
+version: 0.9
 depend: [BedwarsRel]
 author: lgou2w
-authors: [lgou2w]
+authors: [lgou2w, HealPot]
 website: http://www.mcmoonlake.com
 commands:
   bw-sl:

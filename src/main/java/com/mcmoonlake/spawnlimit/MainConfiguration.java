@@ -22,10 +22,10 @@ import java.io.IOException;
 
 public class MainConfiguration {
 
-    private final Main main;
+    private final Spawnlimit main;
     private double radius;
 
-    public MainConfiguration(Main main) {
+    public MainConfiguration(Spawnlimit main) {
         this.main = main;
     }
 
